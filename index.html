@@ -111,6 +111,8 @@
   }
   .reel-slot{
     flex:0 0 160px;
+    min-width:0;
+    width:160px;
     aspect-ratio:9/16;
     background:var(--ink);
     color:var(--paper);
@@ -122,9 +124,31 @@
     font-size:0.85rem;
     padding:14px;
     text-decoration:none;
+    position:relative;
+    overflow:hidden;
   }
-  .reel-slot span{opacity:0.75;}
-  .reel-slot:hover{background:var(--edit-yellow-deep); color:var(--ink);}
+  .reel-slot img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .play-badge{
+    position:relative;
+    z-index:1;
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    background:rgba(21,24,27,0.55);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:1.1rem;
+    color:var(--paper);
+  }
+  .reel-slot:hover .play-badge{background:var(--edit-yellow-deep); color:var(--ink);}
   .editing-notes{margin-top:28px; color:var(--ink-soft); font-size:0.95rem;}
 
   /* ---------- Freelance section: checklist motif ---------- */
@@ -207,24 +231,22 @@
 
     <div class="filmstrip">
       <!--
-        SWAP-IN INSTRUCTIONS:
-        Replace each reel-slot below with a real embed once you've picked
-        your 3 strongest Shorts. For each video, get its ID from the URL
-        (youtube.com/shorts/VIDEO_ID_HERE) and replace one block with:
-
-        <iframe class="reel-slot" style="border:none;"
-          src="https://www.youtube.com/embed/VIDEO_ID_HERE"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope"
-          allowfullscreen></iframe>
+        ADDING MORE SHORTS:
+        Copy one of the <a class="reel-slot"> blocks below, then swap in a
+        new video's ID in two places: the href and the img src.
+        Get the ID from the URL: youtube.com/shorts/VIDEO_ID_HERE
       -->
-      <a class="reel-slot" href="https://www.youtube.com/@maccards-z7j" target="_blank" rel="noopener">
-        <span>Short 1<br>— swap in embed —</span>
+      <a class="reel-slot" href="https://youtube.com/shorts/72Fy9Rq00P4" target="_blank" rel="noopener">
+        <img src="short1.png" alt="MaCCards Short 1 thumbnail" loading="lazy">
+        <span class="play-badge">&#9654;</span>
       </a>
-      <a class="reel-slot" href="https://www.youtube.com/@maccards-z7j" target="_blank" rel="noopener">
-        <span>Short 2<br>— swap in embed —</span>
+      <a class="reel-slot" href="https://youtube.com/shorts/4rfxnAWnDq8" target="_blank" rel="noopener">
+        <img src="short2.png" alt="MaCCards Short 2 thumbnail" loading="lazy">
+        <span class="play-badge">&#9654;</span>
       </a>
-      <a class="reel-slot" href="https://www.youtube.com/@maccards-z7j" target="_blank" rel="noopener">
-        <span>Short 3<br>— swap in embed —</span>
+      <a class="reel-slot" href="https://youtube.com/shorts/ISPEbaDE_j8" target="_blank" rel="noopener">
+        <img src="short3.png" alt="MaCCards Short 3 thumbnail" loading="lazy">
+        <span class="play-badge">&#9654;</span>
       </a>
     </div>
 
