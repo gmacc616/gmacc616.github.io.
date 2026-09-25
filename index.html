@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gab Castro — Video Editor &amp; Virtual Assistant</title>
+<meta name="description" content="Short-form video editor and virtual assistant based in Cabuyao, Philippines. Available for remote freelance work.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FFFFFF;
+    --ink:#15181B;
+    --ink-soft:#4A5057;
+    --edit-yellow:#F2B705;
+    --edit-yellow-deep:#C98E00;
+    --admin-teal:#2D5C63;
+    --admin-teal-soft:#DCE9E8;
+    --line:#E4E1D9;
+    --max-w:760px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', system-ui, sans-serif;
+    line-height:1.55;
+  }
+  .wrap{max-width:var(--max-w); margin:0 auto; padding:0 24px;}
+  a{color:inherit;}
+
+  /* ---------- Hero ---------- */
+  header.hero{
+    border-bottom:6px solid var(--ink);
+    padding:64px 0 40px;
+    position:relative;
+  }
+  .hero-stripe{
+    position:absolute;
+    top:0; left:0; right:0; height:10px;
+    background:repeating-linear-gradient(
+      -45deg,
+      var(--edit-yellow), var(--edit-yellow) 14px,
+      var(--ink) 14px, var(--ink) 28px
+    );
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--ink-soft);
+    margin:0 0 18px;
+  }
+  h1{
+    font-family:'Archivo Black', sans-serif;
+    font-weight:400;
+    font-size:clamp(2.1rem, 6vw, 3.2rem);
+    line-height:1.05;
+    margin:0 0 20px;
+    max-width:14ch;
+  }
+  .hero p.lede{
+    font-size:1.1rem;
+    color:var(--ink-soft);
+    max-width:52ch;
+    margin:0 0 28px;
+  }
+  .cta-row{display:flex; gap:12px; flex-wrap:wrap;}
+  .btn{
+    display:inline-block;
+    padding:12px 20px;
+    border-radius:2px;
+    font-weight:600;
+    font-size:0.95rem;
+    text-decoration:none;
+    border:2px solid var(--ink);
+  }
+  .btn-solid{background:var(--ink); color:var(--paper);}
+  .btn-solid:hover{background:var(--edit-yellow-deep); border-color:var(--edit-yellow-deep); color:var(--ink);}
+  .btn-outline{background:transparent; color:var(--ink);}
+  .btn-outline:hover{background:var(--admin-teal-soft); border-color:var(--admin-teal);}
+
+  /* ---------- Section shared ---------- */
+  section{padding:56px 0;}
+  section + section{border-top:1px solid var(--line);}
+  .sec-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    letter-spacing:0.02em;
+    margin:0 0 8px;
+  }
+  h2{
+    font-family:'Archivo Black', sans-serif;
+    font-weight:400;
+    font-size:1.7rem;
+    margin:0 0 14px;
+  }
+  section > p.intro{color:var(--ink-soft); max-width:56ch; margin:0 0 32px;}
+
+  /* ---------- Video editing section: filmstrip motif ---------- */
+  #editing .sec-label{color:var(--edit-yellow-deep);}
+  .filmstrip{
+    border-top:8px dotted var(--edit-yellow);
+    border-bottom:8px dotted var(--edit-yellow);
+    padding:20px 0;
+    display:flex;
+    gap:16px;
+    overflow-x:auto;
+  }
+  .reel-slot{
+    flex:0 0 160px;
+    aspect-ratio:9/16;
+    background:var(--ink);
+    color:var(--paper);
+    border-radius:2px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    font-size:0.85rem;
+    padding:14px;
+    text-decoration:none;
+  }
+  .reel-slot span{opacity:0.75;}
+  .reel-slot:hover{background:var(--edit-yellow-deep); color:var(--ink);}
+  .editing-notes{margin-top:28px; color:var(--ink-soft); font-size:0.95rem;}
+
+  /* ---------- Freelance section: checklist motif ---------- */
+  #freelance .sec-label{color:var(--admin-teal);}
+  .task-list{list-style:none; margin:0; padding:0;}
+  .task-list li{
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    padding:16px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .task-list li:last-child{border-bottom:none;}
+  .task-check{
+    flex:0 0 22px;
+    height:22px;
+    border:2px solid var(--admin-teal);
+    border-radius:3px;
+    margin-top:2px;
+    position:relative;
+  }
+  .task-check::after{
+    content:"";
+    position:absolute;
+    left:5px; top:1px;
+    width:6px; height:11px;
+    border:solid var(--admin-teal);
+    border-width:0 2px 2px 0;
+    transform:rotate(45deg);
+  }
+  .task-body strong{display:block; font-size:1.02rem; margin-bottom:2px;}
+  .task-body span{color:var(--ink-soft); font-size:0.92rem;}
+
+  .experience{margin-top:36px; padding-top:28px; border-top:1px solid var(--line);}
+  .experience h3{font-size:1.05rem; margin:0 0 4px;}
+  .experience .role-meta{font-family:'IBM Plex Mono', monospace; font-size:0.82rem; color:var(--ink-soft); margin:0 0 8px;}
+  .experience p{margin:0; color:var(--ink-soft); font-size:0.95rem;}
+
+  /* ---------- Contact ---------- */
+  #contact{padding:56px 0 72px;}
+  .contact-grid{display:flex; flex-wrap:wrap; gap:28px; margin-top:24px;}
+  .contact-item{flex:1 1 200px;}
+  .contact-item .label{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--ink-soft); margin-bottom:4px;}
+  .contact-item a{font-weight:600; text-decoration:none; border-bottom:2px solid var(--edit-yellow);}
+  .contact-item a:hover{border-color:var(--admin-teal);}
+
+  footer{
+    border-top:6px solid var(--ink);
+    padding:20px 0;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--ink-soft);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-stripe"></div>
+  <div class="wrap">
+    <p class="eyebrow">Cabuyao, Laguna, Philippines — open to remote work</p>
+    <h1>I edit short-form video and keep your back office running.</h1>
+    <p class="lede">Two things, done reliably: fast-turnaround vertical video editing, and dependable virtual assistant work — research, data entry, and customer support.</p>
+    <div class="cta-row">
+      <a class="btn btn-solid" href="mailto:manthonycastro833@gmail.com">Email me</a>
+      <a class="btn btn-outline" href="https://drive.google.com/file/d/1j1hZr65cmjLWYpo9lhVBrY4sHj9h9SmX/view?usp=sharing" target="_blank" rel="noopener">View resume</a>
+    </div>
+  </div>
+</header>
+
+<section id="editing">
+  <div class="wrap">
+    <p class="sec-label">01 — Video Editing</p>
+    <h2>Vertical cuts, made to hold attention.</h2>
+    <p class="intro">I run my own Shorts channel, MaCCards, as a live testing ground for hooks, pacing, and captions — everything gets watched, measured, and improved on the next cut.</p>
+
+    <div class="filmstrip">
+      <!--
+        SWAP-IN INSTRUCTIONS:
+        Replace each reel-slot below with a real embed once you've picked
+        your 3 strongest Shorts. For each video, get its ID from the URL
+        (youtube.com/shorts/VIDEO_ID_HERE) and replace one block with:
+
+        <iframe class="reel-slot" style="border:none;"
+          src="https://www.youtube.com/embed/VIDEO_ID_HERE"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope"
+          allowfullscreen></iframe>
+      -->
+      <a class="reel-slot" href="https://www.youtube.com/@maccards-z7j" target="_blank" rel="noopener">
+        <span>Short 1<br>— swap in embed —</span>
+      </a>
+      <a class="reel-slot" href="https://www.youtube.com/@maccards-z7j" target="_blank" rel="noopener">
+        <span>Short 2<br>— swap in embed —</span>
+      </a>
+      <a class="reel-slot" href="https://www.youtube.com/@maccards-z7j" target="_blank" rel="noopener">
+        <span>Short 3<br>— swap in embed —</span>
+      </a>
+    </div>
+
+    <p class="editing-notes">Full channel: <a href="https://www.youtube.com/@maccards-z7j" target="_blank" rel="noopener">youtube.com/@maccards-z7j</a> · Edited in CapCut · Also editing for 10+ creator accounts since 2024.</p>
+  </div>
+</section>
+
+<section id="freelance">
+  <div class="wrap">
+    <p class="sec-label">02 — Virtual Assistant &amp; Admin</p>
+    <h2>Reliable support, not guesswork.</h2>
+    <p class="intro">Three years handling live customer accounts taught me to close things out, not leave them half-done.</p>
+
+    <ul class="task-list">
+      <li>
+        <div class="task-check"></div>
+        <div class="task-body"><strong>Customer support</strong><span>Ticket handling, encoding, and account queries at high volume.</span></div>
+      </li>
+      <li>
+        <div class="task-check"></div>
+        <div class="task-body"><strong>Research &amp; data entry</strong><span>Structured findings into clean sheets, no half-finished rows.</span></div>
+      </li>
+      <li>
+        <div class="task-check"></div>
+        <div class="task-body"><strong>Admin support</strong><span>Inbox triage, scheduling, and document organization.</span></div>
+      </li>
+      <li>
+        <div class="task-check"></div>
+        <div class="task-body"><strong>Content writing</strong><span>Clear, direct copy — no filler, no padded word counts.</span></div>
+      </li>
+    </ul>
+
+    <div class="experience">
+      <h3>Customer Service / Encoder</h3>
+      <p class="role-meta">J&amp;T Express · Full-time · 2023 – July 2026</p>
+      <p>Three years of daily customer-facing and encoding work, start to finish, no gaps on the résumé.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <p class="sec-label">Get in touch</p>
+    <h2>Let's talk about the work.</h2>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <p class="label">EMAIL</p>
+        <a href="mailto:manthonycastro833@gmail.com">manthonycastro833@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <p class="label">RESUME</p>
+        <a href="https://drive.google.com/file/d/1j1hZr65cmjLWYpo9lhVBrY4sHj9h9SmX/view?usp=sharing" target="_blank" rel="noopener">Google Drive link</a>
+      </div>
+      <div class="contact-item">
+        <p class="label">LOCATION</p>
+        <span>Cabuyao, Laguna, PH</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Gab Castro · Updated 2026</div>
+</footer>
+
+</body>
+</html>
